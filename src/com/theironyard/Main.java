@@ -51,7 +51,7 @@ public class Main {
                             if (item3.isDone) {
                                 checkbox = "[x]";
                             }
-                            System.out.println(checkbox + " " + num + ". " + item3.text);
+                            System.out.printf("%s %s. %s\n", checkbox, num, item3.text);
                         }
                         break;
                     case "4":
