@@ -32,27 +32,13 @@ public class Main {
 
                 switch (option) {
                     case "1":
-                        System.out.println("Enter your to-do list:");
-                        String text = scanner.nextLine();
-                        Item item = new Item(text, false);
-                        items.add(item);
+                        addTodo(scanner, items);
                         break;
                     case "2":
-                        System.out.println("Which item do you want to toggle");
-                        int i = Integer.valueOf(scanner.nextLine());
-                        Item item2 = items.get(i - 1);
-                        item2.isDone = !item2.isDone;
+                        toggleTodo(scanner, items);
                         break;
                     case "3":
-                        for (int j = 0; j < items.size(); j++) {
-                            Item item3 = items.get(j);
-                            int num = j + 1;
-                            String checkbox = "[ ]";
-                            if (item3.isDone) {
-                                checkbox = "[x]";
-                            }
-                            System.out.printf("%s %s. %s\n", checkbox, num, item3.text);
-                        }
+                        listTodo(items);
                         break;
                     case "4":
                         isLoggedIn = false;
@@ -61,6 +47,32 @@ public class Main {
                         System.out.println("Invalid option.");
                 }
             }
+        }
+    }
+
+
+    public static void addTodo(Scanner scanner, ArrayList<Item> items) {
+        System.out.println("Enter your to-do list:");
+        String text = scanner.nextLine();
+        Item item = new Item(text, false);
+        items.add(item);
+    }
+
+    public static void toggleTodo(Scanner scanner, ArrayList<Item> items) {
+        System.out.println("Which item do you want to toggle");
+        int i = Integer.valueOf(scanner.nextLine());
+        Item item2 = items.get(i - 1);
+        item2.isDone = !item2.isDone;
+    }
+    public static void listTodo(ArrayList<Item> items) {
+        for (int j = 0; j < items.size(); j++) {
+            Item item3 = items.get(j);
+            int num = j + 1;
+            String checkbox = "[ ]";
+            if (item3.isDone) {
+                checkbox = "[x]";
+            }
+            System.out.printf("%s %s. %s\n", checkbox, num, item3.text);
         }
     }
 }
